@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RIDER_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../../../../artifacts/obj/AspNet.Security.OAuth.PlayFab/Debug/netcoreapp3.1/AspNet.Security.OAuth.PlayFab.AssemblyInfo.cs" />
+    <content url="file://$MODULE_DIR$/../../../../package-icon.png" />
+    <content url="file://$MODULE_DIR$/../.." />
+    <content url="file://$MODULE_DIR$/../../../../stylecop.json" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
