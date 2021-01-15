@@ -30,24 +30,18 @@ namespace AspNet.Security.OAuth.PlayFab
         public const string Issuer = "PlayFab";
 
         /// <summary>
-        /// Default value for <see cref="Authentication.GetEntityToken"/>.
-        /// </summary>
-        public const string GetEntityToken = "https://{titleId}.playfabapi.com/Authentication/GetEntityToken";
-
-
-        /// <summary>
         /// Default value for <see cref="OAuthOptions.AuthorizationEndpoint"/>.
         /// </summary>
-        public const string AuthorizationEndpoint = "https://{titleId}.playfabapi.com/Authentication/ValidateEntityToken";
+        public const string AuthorizationEndpoint = "https://{0}.playfabapi.com/Authentication/ValidateEntityToken";
 
         /// <summary>
         /// Default value for <see cref="OAuthOptions.TokenEndpoint"/>
         /// </summary>
-        public const string TokenEndpoint = "https://{titleId}.playfabapi.com/Client/LoginWithCustomID";
+        public const string TokenEndpoint = "https://{0}.playfabapi.com/Client/LoginWithCustomID";
 
         /// <summary>
         /// Default value for <see cref="OAuthOptions.UserInformationEndpoint"/>.
         /// </summary>
-        public const string UserInformationEndpoint = "https://{titleId}.playfabapi.com/Client/GetAccountInfo";
+        public const string UserInformationEndpoint = "https://{0}.playfabapi.com/Client/GetAccountInfo";
     }
 }

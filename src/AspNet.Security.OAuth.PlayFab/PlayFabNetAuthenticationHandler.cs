@@ -35,10 +35,11 @@ namespace AspNet.Security.OAuth.PlayFab
             [NotNull] AuthenticationProperties properties,
             [NotNull] OAuthTokenResponse tokens)
         {
-            string address = QueryHelpers.AddQueryString(Options.GetEntity, "access_token", tokens.AccessToken);
-
-            using var request = new HttpRequestMessage(HttpMethod.Get, address);
+            const string titleId = "AC690";
+            string GetEntityToken = $"https://{titleId}.playfabapi.com/Authentication/GetEntityToken";
+            using var request = new HttpRequestMessage(HttpMethod.Get, GetEntityToken);
             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            // request.Headers.Add();
 
             using var response = await Backchannel.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, Context.RequestAborted);
             if (!response.IsSuccessStatusCode)
