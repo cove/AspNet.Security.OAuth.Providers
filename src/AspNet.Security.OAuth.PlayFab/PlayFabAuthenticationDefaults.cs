@@ -30,6 +30,11 @@ namespace AspNet.Security.OAuth.PlayFab
         public const string Issuer = "PlayFab";
 
         /// <summary>
+        /// Default value for <see cref="RemoteAuthenticationOptions.CallbackPath"/>, unimplemented in PlayFab.
+        /// </summary>
+        public const string CallbackPath = "/null";
+
+        /// <summary>
         /// Default value for <see cref="OAuthOptions.AuthorizationEndpoint"/>.
         /// </summary>
         public const string AuthorizationEndpoint = "https://{0}.playfabapi.com/Authentication/ValidateEntityToken";

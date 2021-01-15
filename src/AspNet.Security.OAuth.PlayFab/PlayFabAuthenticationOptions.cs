@@ -21,6 +21,9 @@ namespace AspNet.Security.OAuth.PlayFab
         public PlayFabAuthenticationOptions()
         {
             ClaimsIssuer = PlayFabAuthenticationDefaults.Issuer;
+            CallbackPath = PlayFabAuthenticationDefaults.CallbackPath;
+            AuthorizationEndpoint = PlayFabAuthenticationDefaults.AuthorizationEndpoint;
+            TokenEndpoint = PlayFabAuthenticationDefaults.TokenEndpoint;
             ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "id");
             ClaimActions.MapJsonKey(ClaimTypes.Role, "type");
         }

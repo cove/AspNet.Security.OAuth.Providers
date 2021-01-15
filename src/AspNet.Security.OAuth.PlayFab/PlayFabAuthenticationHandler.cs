@@ -7,6 +7,7 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Security.Claims;
+using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -36,10 +37,12 @@ namespace AspNet.Security.OAuth.PlayFab
             [NotNull] OAuthTokenResponse tokens)
         {
             const string titleId = "AC690";
-            string GetEntityToken = $"https://{titleId}.playfabapi.com/Authentication/GetEntityToken";
-            using var request = new HttpRequestMessage(HttpMethod.Get, GetEntityToken);
+            string getEntityToken = $"https://{titleId}.playfabapi.com/Authentication/GetEntityToken";
+            using var request = new HttpRequestMessage(HttpMethod.Get, getEntityToken);
             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            // request.Headers.Add();
+
+            string entityKey = "{\"Id\": " + "\"1234\"" + "\"Type\": \"title\"}";
+            request.Content = new StringContent(entityKey, Encoding.UTF8, "application/json");
 
             using var response = await Backchannel.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, Context.RequestAborted);
             if (!response.IsSuccessStatusCode)
@@ -54,13 +57,7 @@ namespace AspNet.Security.OAuth.PlayFab
             }
 
             using var payload = JsonDocument.Parse(await response.Content.ReadAsStringAsync());
-
-            var principal = new ClaimsPrincipal(identity);
-            var context = new OAuthCreatingTicketContext(principal, properties, Context, Scheme, Options, Backchannel, tokens, payload.RootElement);
-            context.RunClaimActions();
-
-            await Options.Events.CreatingTicket(context);
-            return new AuthenticationTicket(context.Principal, context.Properties, Scheme.Name);
+            throw new HttpRequestException(payload.ToString());
         }
     }
 }
